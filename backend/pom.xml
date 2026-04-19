@@ -1,19 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <!--  Spring Boot Parent  -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.3</version>
     </parent>
+
     <groupId>com.dpi</groupId>
     <artifactId>dpi-engine</artifactId>
     <version>1.0.0</version>
+
     <properties>
         <java.version>17</java.version>
         <pcap4j.version>1.8.2</pcap4j.version>
     </properties>
+
     <dependencies>
+
         <!--  Spring Boot  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -23,6 +28,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
+
+        <!--  Actuator — health check endpoint for UptimeRobot  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!--  Pcap4J  -->
         <dependency>
             <groupId>org.pcap4j</groupId>
@@ -34,32 +46,39 @@
             <artifactId>pcap4j-packetfactory-static</artifactId>
             <version>${pcap4j.version}</version>
         </dependency>
-        <!--  Lombok (NO extra config needed)  -->
+
+        <!--  Lombok  -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <!--  Swagger  -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.3.0</version>
         </dependency>
+
         <!--  Test  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+
     <build>
+        <!--  JAR name fix — Render ka start command simple rahega  -->
+        <finalName>netwatch-backend</finalName>
         <plugins>
-            <!--  Spring Boot Plugin ONLY  -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
+
 </project>
