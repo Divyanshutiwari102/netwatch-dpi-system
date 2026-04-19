@@ -4,12 +4,12 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Dependencies pehle copy karo (caching ke liye)
-COPY pom.xml .
+COPY backend/pom.xml .
 RUN mvn dependency:go-offline -B
 
 # Source copy karo aur build karo
-COPY src ./src
-RUN mvn clean package -DskipTests
+COPY backend/src ./src
+RUN mvn clean package -Dmaven.test.skip=true
 
 # ─── Stage 2: Run ─────────────────────────────────────────────────
 FROM eclipse-temurin:17-jre-alpine
