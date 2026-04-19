@@ -1,18 +1,15 @@
 import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
-  // sockjs-client is CommonJS — transpile it so Next.js/Turbopack can bundle it
-  transpilePackages: ['sockjs-client'],
+const BACKEND = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'
 
-  // Proxy all /api/*, /ws/* to Spring Boot on :8080
-  // This eliminates CORS issues in both dev and production
+const nextConfig: NextConfig = {
+  transpilePackages: ['sockjs-client'],
   async rewrites() {
     return [
-      { source: '/api/:path*',      destination: 'http://localhost:8080/api/:path*' },
-      { source: '/ws/:path*',       destination: 'http://localhost:8080/ws/:path*' },
-      { source: '/actuator/:path*', destination: 'http://localhost:8080/actuator/:path*' },
+      { source: '/api/:path*',      destination: `${BACKEND}/api/:path*` },
+      { source: '/ws/:path*',       destination: `${BACKEND}/ws/:path*` },
+      { source: '/actuator/:path*', destination: `${BACKEND}/actuator/:path*` },
     ]
   },
 }
-
 export default nextConfig
