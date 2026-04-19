@@ -14,13 +14,13 @@ RUN mvn clean package -DskipTests
 # ─── Stage 2: Run ─────────────────────────────────────────────────
 FROM eclipse-temurin:17-jre-alpine
 
+# libpcap install karo ← YE ADD KARO
+RUN apk add --no-cache libpcap
+
 WORKDIR /app
 
-# Sirf JAR copy karo build stage se
 COPY --from=build /app/target/netwatch-backend.jar app.jar
 
-# Port expose karo
 EXPOSE 8080
 
-# Run karo
 ENTRYPOINT ["java", "-jar", "app.jar"]
