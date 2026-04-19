@@ -8,7 +8,7 @@ COPY backend/pom.xml .
 RUN mvn dependency:go-offline -B
 
 COPY backend/src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -Dmaven.test.skip=true
 
 # ─── Stage 2: Run ─────────────────────────────────────────────────
 FROM eclipse-temurin:17-jre-alpine
