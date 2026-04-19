@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ──────────────────────────────────────────────────────────── */
+:root {
+  --bg0:#0a0c10;
+  --bg1:#0f1117;
+  --bg2:#141720;
+  --bg3:#191d28;
+  --bg4:#1f2436;
+  --bg5:#252b3d;
+
+  --divider:#0f1117;
+  --border:rgba(255,255,255,0.07);
+  --border-bright:rgba(255,255,255,0.14);
+  --border-focus:rgba(0,200,232,0.45);
+
+  --cyan:#00bcd4;
+  --cyan-dim:rgba(0,188,212,0.12);
+  --green:#00c984;
+  --green-dim:rgba(0,201,132,0.1);
+  --red:#f05060;
+  --red-dim:rgba(240,80,96,0.1);
+  --amber:#f0a020;
+  --amber-dim:rgba(240,160,32,0.1);
+  --purple:#9c7ef0;
+  --purple-dim:rgba(156,126,240,0.1);
+
+  /* Text — calibrated for readability */
+  --text1:#dde4ef;
+  --text2:#8e9ab8;
+  --text3:#5a6480;
+  --text4:#343d55;
+
+  --row-hover:rgba(255,255,255,0.025);
+  --row-blocked:rgba(240,80,96,0.05);
+
+  --font-mono:'JetBrains Mono','Fira Code',ui-monospace,monospace;
+  --font-ui:'Inter',system-ui,sans-serif;
+}
+
+[data-theme="light"] {
+  --bg0:#f2f4f8;
+  --bg1:#eaecf4;
+  --bg2:#e0e4f0;
+  --bg3:#d6dae8;
+  --bg4:#ccd2e4;
+  --bg5:#c0c8dc;
+
+  --divider:#d8dce8;
+  --border:rgba(0,0,0,0.07);
+  --border-bright:rgba(0,0,0,0.13);
+  --border-focus:rgba(0,150,180,0.4);
+
+  --cyan:#0090a8;
+  --green:#00966e;
+  --red:#c83040;
+  --amber:#c07810;
+  --purple:#7860c8;
+
+  --text1:#111620;
+  --text2:#3a4560;
+  --text3:#7a88a8;
+  --text4:#aab0c8;
+
+  --row-hover:rgba(0,0,0,0.025);
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html, body, #root {
+  height:100%;
+}
+
+body {
+  background:var(--bg0);
+  color:var(--text1);
+  font-family:var(--font-ui);
+  font-size:13px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+#root {
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  height:100%;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width:5px; height:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--bg5); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:var(--border-bright); }
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.5; transform:scale(0.85); }
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50% { opacity:0.2; }
+}
+
+@keyframes toast-in {
+  from { opacity:0; transform:translateY(-6px) scale(0.98); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+@keyframes marquee {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
+
+/* Dropdown entrance animation */
+@keyframes dropdown-in {
+  from { opacity:0; transform:translateY(-4px) scale(0.98); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* ── Packet Table Rows ──────────────────────────────────────────────────────── */
+.packet-row {
+  border-bottom:1px solid rgba(255,255,255,0.035);
+  transition:background 0.07s ease;
+}
+
+.packet-row:hover {
+  background:var(--row-hover) !important;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+.btn-start {
+  background:rgba(0,201,132,0.1);
+  border:1px solid rgba(0,201,132,0.35);
+  color:var(--green);
+}
+
+.btn-stop {
+  background:rgba(240,80,96,0.1);
+  border:1px solid rgba(240,80,96,0.35);
+  color:var(--red);
+}
+
+.btn-start:hover:not(:disabled) {
+  background:rgba(0,201,132,0.18);
+  border-color:rgba(0,201,132,0.5);
+}
+
+.btn-stop:hover:not(:disabled) {
+  background:rgba(240,80,96,0.18);
+  border-color:rgba(240,80,96,0.5);
+}
+
+/* ── Z-index system ─────────────────────────────────────────────────────────── */
+/* header: 10, column-headers: 2, tooltip: 200, dropdown-portal: 9999 */

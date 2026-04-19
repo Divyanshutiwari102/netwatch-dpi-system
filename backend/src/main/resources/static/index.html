@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NetWatch — Real-Time Network Monitor</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<!--
+  CDN libraries — loaded as plain scripts, not modules.
+  Babel standalone transforms <script type="text/babel"> blocks at runtime.
+  We expose components as window globals so Babel's inline transform can
+  see them without needing ES module resolution across files.
+
+  Load order (strict):
+    1. CDN libs       → React, ReactDOM, Babel, SockJS, Stomp, Chart.js
+    2. api.js         → window.API        (REST helpers, plain JS)
+    3. websocket.js   → window.WS         (STOMP manager, plain JS)
+    4. Stats.js       → window.Stats      (Babel/JSX)
+    5. PacketTable.js → window.PacketTable (Babel/JSX)
+    6. Controls.js    → window.Controls   (Babel/JSX)
+    7. app.js         → mounts <App />    (Babel/JSX)
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+<!-- Plain JS (no JSX) — expose as window globals before Babel components load -->
+<script src="js/api.js"></script>
+<script src="js/websocket.js"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<!--
+  Babel transforms these at runtime. Each file assigns window.ComponentName
+  so app.js can reference Stats, PacketTable, Controls without import.
+-->
+<script type="text/babel" src="js/components/Stats.js"></script>
+<script type="text/babel" src="js/components/PacketTable.js"></script>
+<script type="text/babel" src="js/components/Controls.js"></script>
+<script type="text/babel" src="js/app.js"></script>
+</body>
+</html>
