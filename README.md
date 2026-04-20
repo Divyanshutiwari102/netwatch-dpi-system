@@ -14,7 +14,7 @@ Access the deployed dashboard here:
 
 The backend service powers PCAP processing and rule-based filtering.
 
-🔗 Backend URL: [[Backend](https://netwatch-backend-9qxu.onrender.com)]
+🔗  Backend URL: https://netwatch-backend-9qxu.onrender.com
 
 ---
 
