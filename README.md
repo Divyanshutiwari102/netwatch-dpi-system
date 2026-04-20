@@ -65,7 +65,8 @@ Block IP → 142.251.150.119
 - This system operates in **PCAP Analysis Mode** in the cloud.
 - Blocking is implemented as **rule-based filtering on analyzed traffic**.
 - Live packet interception is not supported in deployment environments like Vercel.
-
+ why :
+ > In cloud deployments, raw packet capture is restricted due to sandboxing and security limitations. Hence, NetWatch operates in PCAP replay mode for demonstration.
 ---
 
 ## 🎯 Key Features Demonstrated
@@ -101,6 +102,7 @@ Architecturally, it mirrors how **pfSense**, **Cisco Umbrella**, and **Palo Alto
 - **WebSocket streaming** — every processed packet pushed live to the dashboard via STOMP
 - **Scheduled flow eviction** — `@Scheduled` cleanup prevents unbounded `ConcurrentHashMap` growth
 
+ 
 ---
 
 ## 🧠 Architecture
@@ -134,7 +136,7 @@ One producer, one queue, N workers, one broadcast channel. Scaling path: swap qu
 
 | Layer | Technology |
 |---|---|
-| Language | Java 21 |
+| Language | Java 17 |
 | Framework | Spring Boot 3.2 |
 | Packet Capture | Pcap4J 1.8 (libpcap wrapper) |
 | Concurrency | `LinkedBlockingQueue` · `ConcurrentHashMap` · `AtomicLong` |
