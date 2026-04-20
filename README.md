@@ -8,8 +8,7 @@
 
 ## 🎥 Demo
 
-[[NetWatch Demo]((https://youtu.be/Cq6tmgdrz7Q))
-
+[NetWatch Demo](https://youtu.be/Cq6tmgdrz7Q)
 > Live capture showing real-time SNI extraction and flow-level blocking.
 ## 🔥 Overview
 
