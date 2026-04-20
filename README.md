@@ -6,6 +6,11 @@
 
 ---
 
+## 🎥 Demo
+
+[![NetWatch Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)]((https://youtu.be/Cq6tmgdrz7Q))
+
+> Live capture showing real-time SNI extraction and flow-level blocking.
 ## 🔥 Overview
 
 Classic firewalls block by IP and port — but IP `142.250.80.14` serves YouTube, Gmail, and Google Drive on the same port 443. You can't tell them apart without going deeper.
