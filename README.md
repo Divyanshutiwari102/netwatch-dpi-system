@@ -5,6 +5,77 @@
 **Java 17 · Spring Boot 3.2 · Pcap4J · Next.js 15 · WebSocket / STOMP · Tailwind CSS**
 
 ---
+## 🚀 Live Demo
+
+Access the deployed dashboard here:
+
+🔗 https://netwatch-dpi-system.vercel.app/dashboard
+## ⚙️ Backend API
+
+The backend service powers PCAP processing and rule-based filtering.
+
+🔗 Backend URL: https://your-backend-url.onrender.com
+
+---
+
+## 📁 PCAP Demo (Cloud Mode)
+
+Since live packet capture is not supported in cloud environments, this system analyzes pre-recorded PCAP files.
+
+### 📌 PCAP File Path (Used in Demo)
+/app/sample-data/demo.pcap
+
+---
+
+## 🧪 How to Test Blocking
+
+### 🔴 Domain-Based Blocking
+
+Use the following domains to test:
+
+- google.com (for testing rule matching)
+
+👉 Add rule:
+Block Domain → google
+
+---
+
+### 🔴 IP-Based Blocking
+
+Use the following IP for testing:
+142.251.150.119
+
+👉 Add rule:
+Block IP → 142.251.150.119
+
+---
+
+## 📊 Expected Behavior
+
+| Test Type | Result |
+|----------|--------|
+| Normal traffic | ✅ Allowed |
+| Blocked domain/IP | 🔴 Marked as BLOCKED |
+| Filtered packets | ⚪ Ignored |
+
+---
+
+## ⚠️ Note
+
+- This system operates in **PCAP Analysis Mode** in the cloud.
+- Blocking is implemented as **rule-based filtering on analyzed traffic**.
+- Live packet interception is not supported in deployment environments like Vercel.
+
+---
+
+## 🎯 Key Features Demonstrated
+
+- Packet parsing from PCAP
+- Protocol classification (TCP, UDP, HTTPS)
+- Domain & IP extraction
+- Rule-based filtering (IP & Domain)
+- Blocked event detection
+- CSV export of filtered packets
 
 ## 🎥 Demo
 
