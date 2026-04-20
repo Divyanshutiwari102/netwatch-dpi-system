@@ -273,3 +273,6 @@ Rules are evaluated once per flow — on the `ClientHello` where SNI is first se
 ## 📄 License
 
 MIT
+## 👨‍💻 Author
+
+Divyanshu Tiwari
