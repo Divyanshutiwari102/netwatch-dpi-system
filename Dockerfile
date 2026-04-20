@@ -20,7 +20,7 @@ RUN apk add --no-cache libpcap
 WORKDIR /app
 
 COPY --from=build /app/target/netwatch-backend.jar app.jar
-
+COPY sample-data/demo.pcap /app/sample-data/demo.pcap
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
